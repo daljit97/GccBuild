@@ -1,0 +1,29 @@
+name: Build GCC
+
+on:
+  push:
+
+jobs:
+  linux-clang-build:
+    runs-on: ubuntu-20.04
+
+    env:
+        CC=ccache gcc
+        CXX=ccache g++
+
+    steps:
+        - run: sudo apt update && sudo apt install build-essential
+
+        - name: Setup ccache
+          uses: hendrikmuhs/ccache-action@v1.2
+
+        - name: Build GCC
+          run: >
+            git clone https://github.com/gcc-mirror/gcc.git
+            cd gcc
+            git checkout releases/gcc-13.2.0
+            ./contrib/download_prerequisites
+            cd ..
+            mkdir build
+            cd build
+            ../gcc/configure --prefix=./gcc_13.2.0 --enable-shared --enable-threads=posix --enable-languages=c,c++
