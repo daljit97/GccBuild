@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  linux-clang-build:
+  build-gcc:
     runs-on: ubuntu-20.04
 
     env:
