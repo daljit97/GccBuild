@@ -27,3 +27,5 @@ jobs:
             mkdir build
             cd build
             ../gcc/configure --prefix=$PWD/../gcc_13.2.0 --enable-shared --enable-threads=posix --enable-languages=c,c++ --host=x86_64-pc-linux-gnu --disable-multilib
+            make
+            make install
