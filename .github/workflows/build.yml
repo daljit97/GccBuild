@@ -18,7 +18,7 @@ jobs:
           uses: hendrikmuhs/ccache-action@v1.2
 
         - name: Build GCC
-          run: >
+          run: |
             git clone https://github.com/gcc-mirror/gcc.git
             cd gcc
             git checkout releases/gcc-13.2.0
